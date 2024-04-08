@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test9.html</title>
+    <style>
+        table{
+            border-collapse: collapse; /* 여백을 없앰 = cellspacing*/
+            /* width: 300px;
+            height: 280px; */
+        }
+        th {
+            /* border: 1px solid gray; */
+            /* padding: 20px; */
+            background-color: pink;
+        }
+
+        /* 쉼표를 사용하면 th와 td 둘 다 적용하는 스타일이 됨 */
+        th, td{
+            /* border-width: 1px;
+            border-color: gray;
+            border-style: solid; */
+            border: 1px solid gray;
+            text-align: center;
+            padding: 20px;
+        }
+        .aa {background-color: aqua;}
+        .bb {background-color: gold;}
+    </style>
+</head>
+<body>
+    <h2>표에 스타일 적용하기</h2>
+    <table>
+        <tr class="aa">
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+        <tr class="bb">
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+        </tr>
+        <tr class="aa">
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+        </tr>
+        <tr class="bb">
+            <td>31</td>
+            <td>32</td>
+            <td>33</td>
+        </tr>
+    </table>
+</body>
+</html>

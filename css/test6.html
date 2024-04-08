@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test6.html</title>
+    
+    <style type="text/css" rel="stylesheet">
+        p {
+            font-size: 20pt;
+            color: rgba(0, 187, 25, 0.5)
+        }
+        .atom {color: blue;}
+        #mbc {color: yellow;}
+        .kbs {background-color: cyan;}
+    </style>
+</head>
+<!-- <div>와 <span>은 둘 다 의미없는 태그라는 것이 공통점이지만
+    차이점은 <div>는 줄 띄움 <span>은 아무런 효과가 없다는 차이가 있다
+    그래서 <div>는 문단, <span>은 단어에 사용됨  -->
+
+<!-- <body background="../../images/kwgBlog/banner.jpg"> -->
+<body bgcolor="#eee">
+    <h2>외부 스타일시트(External Style)</h2>
+    <p>1.<span class="kbs">안녕</span>하세요</p>
+    <p>2.<span class="atom">안녕</span>하세요</p>
+    2-1.반갑습니다<br/>
+    <p>3.안녕하세요</p>
+    3-1.<span class="atom">반갑</span>습니다<br/>
+    <p class="atom">4.안녕하세요</p>
+    <div class="kbs">4-1.반갑습니다</div>
+    <p>5.안녕하세요</p>
+    5-1.반갑습니다<br/>
+    <p>6.안녕하세요</p>
+    <div id="mbc">6-1.반갑습니다</div>
+    <p>7.안녕하세요</p>
+    7-1.반갑습니다<br/>
+    <p>8.안녕하세요</p>
+    <div id="mbc">8-1.반갑습니다</div>
+    <!-- id는 본문에 한번만 사용해야 함! 여러번 주고 싶다면 class를 사용하자 -->
+</body>
+</html>
