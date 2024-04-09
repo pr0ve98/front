@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test17.html</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        body {
+            margin: 0px auto;
+            font-size: 1em;
+        }
+        .container {
+            /* width: 100%; */
+            padding: 20px;
+            margin: 20px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+        }
+        input[type="text"], input[type="password"], input[type="number"], button, select {
+            width: 100%;
+            margin: 20px 0px;
+            padding: 10px 5px;
+            font-size: 1em;
+        }
+        input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover, button:hover, select:hover {
+            background-color: #ddd;
+        }
+        button {
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            border-radius: 55px;
+        }
+        button:hover {
+            background-color: #bbb;
+        }
+        input[type="radio"] {
+            margin: 15px 5px 35px 10px;
+            
+        }
+        h2 {
+            margin: 0px 0px 20px;
+        }
+        .title {
+            font-weight: bolder;
+            padding: 5px 5px;
+            background-color: #bbb;
+            border: 1px solid #aaa;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>form태그와 CSS</h2>
+        <form>
+            <label for="mid" class="title">아이디</label>
+            <input type="text" name="mid" id="mid" size="20" placeholder="아이디를 입력하세요" required autofocus />
+            <label for="pwd" class="title">비밀번호</label>
+            <input type="password" name="pwd" id="pwd" size="20" placeholder="비밀번호를 입력하세요" required />
+            <label for="age" class="title">나이</label>
+            <input type="number" name="age" id="age" size="20" value="20" min="20" max="99" />
+            <div>
+                <label for="gender" class="title">성별</label>
+                <input type="radio" name="gender" id="gender" value="남자" checked />남자
+                <input type="radio" name="gender" id="gender" value="여자" />여자
+            </div>
+            <label for="address" class="title">주소</label>
+            <input type="text" name="address" id="address" size="20" placeholder="주소를 입력하세요" />
+            <label for="sosok" class="title">소속</label>
+            <select name="sosok">
+                <option value="">부서 선택</option>
+                <option>인사과</option>
+                <option>총무과</option>
+                <option>자재과</option>
+                <option>영업과</option>
+                <option>생산과</option>
+            </select>
+            <button type="submit">회원가입</button>
+            <button type="reset" >다시입력</button>
+            <button type="button">돌아가기</button>
+        </form>
+    </div>
+</body>
+</html>
