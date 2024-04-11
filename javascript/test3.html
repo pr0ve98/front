@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        'use strict'; // 변수 없이 선언해도 에러가 안 나지만 이 명령어를 사용하면 변수 선언을 해야 사용할 수 있다
+
+        // var과 let의 차이는 var은 같은 변수를 계속 선언할 수 있어 메모리에 부담
+        var aa = 100;
+        console.log("1.aa: ", aa);
+        var aa = 3.14;
+        console.log("2.aa: ", aa);
+        aa = "Korea";
+        console.log("3.aa: ", aa);
+        
+        let bb = 200;
+        console.log("1.bb: ", bb);
+        bb = 3.141592;
+        console.log("2.bb: ", bb);
+        bb = 'Seoul';
+        console.log("3.bb: ", bb);
+        
+        // const는 static final과 같은 기능으로 값을 한번만 줄 수 있다
+        const cc = 300;
+        console.log("1.cc: ", cc);
+        // cc = 3.14;
+        // console.log("2.cc: ", cc);
+        
+        dd = 400;;
+        console.log("1.dd: ", dd);
+    </script>
+    <title>test3.html</title>
+</head>
+<body>
+    <h2>본문입니다.</h2>
+</body>
+</html>

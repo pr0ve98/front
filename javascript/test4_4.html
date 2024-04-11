@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test4_4.html</title>
+    <script>
+        'use strict'; // 함수속 변수는 변수 선언을 안 해도 메모리에 올라가기 때문에 에러가 안 남
+
+        // 스크립트 속 함수들은 먼저 메모리에 올려놓기 때문에 선언부 위에 출력하는 게 가능함
+        function atom1() {
+            // document.write("atom1: 안녕2@@@@!!!!!!!!<br/>");
+            alert("atom1: 안녕2@@@@!!!!!!!!");
+        }
+
+        function atom4(su) {
+            alert("su: "+su);
+        }
+
+        function atom5(su, str) {
+            alert("atom5 \n\n su: "+su+", str: "+str);
+        }
+
+        function atom6() {
+            let su = 2000;
+            let str = "반갑습니다."
+            alert("atom6 \n su: "+su+", str: "+str);
+            atom5(su, str);
+        }
+    </script>
+</head>
+<body>
+    <h2>이곳은 본문</h2>
+
+    <input type="button" value="atom1()" onclick="atom1()"/>
+    <!-- <input type="button" value="atom2()" onclick="atom2()"/> -->
+    <button type="button" onclick="atom2()">atom2호출</button>
+    <button type="button" onclick="atom3()">atom3호출</button>
+    <button type="button" onclick="atom4(500)">atom4호출</button>
+    <button type="button" onclick="atom5(500, '안녕')">atom5호출</button>
+    <button type="button" onclick="atom6()">atom6호출</button>
+
+    <script>
+        function atom2() {
+            // document.write("atom2: 안녕33333<br/>");
+            alert("atom2: 안녕33333");
+        }
+        function atom3() {
+            atom1();
+            atom2();
+            alert("작업종료!!");
+        }
+    </script>
+</body>
+</html>

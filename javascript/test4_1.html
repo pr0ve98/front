@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test4_1.html</title>
+    <script>
+        document.write("안녕111<br/>");
+        atom1();
+        
+        // 스크립트 속 함수들은 먼저 메모리에 올려놓기 때문에 선언부 위에 출력하는 게 가능함
+        function atom1() {
+            document.write("안녕2@@@@!!!!!!!!<br/>");
+        }
+
+        // atom1();
+        
+        // atom2는 body태그에 넣었기 때문에 body가 다 실행되고 난 후 호출해야 함
+        atom2(); // error
+    </script>
+</head>
+<body>
+    <h2>이곳은 본문</h2>
+    <script>
+        function atom2() {
+            document.write("안녕33333<br/>");
+        }
+    </script>
+</body>
+</html>

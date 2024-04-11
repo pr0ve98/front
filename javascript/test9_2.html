@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test9_2.html</title>
+    <script>
+        'use strict';
+
+        // 웹에서 입력받은 것은 모두 문자
+        function calc() {
+            let su = prompt("수를 입력하세요!");
+            // let res = su + 100; (문자열로 출력)
+            // let res = parseInt(su) + 100;
+            // let res = Number(su) + 100;
+            let res = eval(su) + 100;
+            alert("res: "+res);
+        }
+    </script>
+</head>
+<body>
+    <h2>본문</h2>
+    <p>
+        <input type="button" value="계산" onclick="calc()" />
+    </p>
+</body>
+</html>
