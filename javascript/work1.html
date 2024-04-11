@@ -4,13 +4,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
-    <title>W3.CSS</title>
+    <title>계산기</title>
     <style>
-        .w3-btn {width:100px; font-size: 2em; margin: -8px 2px;}
-        .row0, .row1, .row2, .row3, .row4 {display: flex;}
-        .title {margin-bottom: 10%; text-align: center;}
-        .w3-display-middle {padding: 50px;}
-        </style>
+        
+    @font-face {
+    font-family: 'TTLaundryGothicR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicR.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    }
+
+    .w3-btn {width:100px; font-size: 2em; margin: -8px 2px;}
+    .row0, .row1, .row2, .row3, .row4 {display: flex;}
+    .title {margin-bottom: 10%; text-align: center; font-family: TTLaundryGothicR; font-size: 36pt;}
+    .w3-display-middle {padding: 50px;}
+    .w3-container {width: 400px; overflow-x: auto; margin-bottom: 10px;}
+    </style>
 </head>
 <body>
     <div class="w3-display-middle w3-panel w3-border w3-round-large">
@@ -19,39 +28,100 @@
             <h2 style="text-shadow:1px 1px 0 #444"><div id="res"></div></h2>
         </div>
     <div class=row0>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">(</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">)</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">%</button></p>
-        <p><button class="w3-button w3-red w3-round-xxlarge w3-btn">AC</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="heart" id="heart" onclick="heart()">♥</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="ce" id="ce" value="ce" onclick="calc(value)">CE</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="c" id="c" value="c" onclick="calc(value)">C</button></p>
+        <p><button class="w3-button w3-red w3-round-xxlarge w3-btn" name="ac" id="ac" value="ac" onclick="calc(value)">AC</button></p>
     </div>
     <div class=row1>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">1</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">2</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">3</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">/</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="one" value="1" onclick="calc(value)">1</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="two" value="2" onclick="calc(value)">2</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="three" value="3" onclick="calc(value)">3</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="op" id="div" value="/" onclick="calc(value)">/</button></p>
     </div>
     <div class=row2>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">4</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">5</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">6</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">*</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="four" value="4" onclick="calc(value)">4</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="five" value="5" onclick="calc(value)">5</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="six" value="6" onclick="calc(value)">6</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="op" id="mul" value="*" onclick="calc(value)">*</button></p>
     </div>
     <div class=row3>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">7</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">8</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">9</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">-</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="seven" value="7" onclick="calc(value)">7</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="eight" value="8" onclick="calc(value)">8</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="nine" value="9" onclick="calc(value)">9</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="op" id="minus" value="-" onclick="calc(value)">-</button></p>
     </div>
     <div class=row4>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">0</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">.</button></p>
-        <p><button class="w3-button w3-blue w3-round-xxlarge w3-btn">=</button></p>
-        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">+</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="num" id="zero" value="0" onclick="calc(value)">0</button></p>
+        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn" name="dot" id="dot" value="." onclick="calc(value)">.</button></p>
+        <p><button class="w3-button w3-blue w3-round-xxlarge w3-btn" name="cl" id="cl" value="=" onclick="calc(value)">=</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn" name="op" id="sum" value="+" onclick="calc(value)">+</button></p>
     </div>
 </div>
 <script>
-    let su = 0;
-    document.getElementById("res").innerText = su;
+    let ini = 0;
+    document.getElementById("res").innerText = ini;
+
+    let su = "";
+    let op = "";
+    let temp = "";
+    let result = "";
+    function calc(value) {
+        // 전체 초기화
+        if(value == "ac") {
+            su = "";
+            op = "";
+            temp = "";
+            result = "";
+            document.getElementById("res").innerText = ini;
+        }
+        // 입력값 초기화
+        else if(value == "c") {
+            su = "";
+            document.getElementById("res").innerText = ini;
+        }
+        // 입력값 뒤에서부터 한자리씩 삭제
+        else if(value == "ce") {
+            if(su.length >= 2) {
+                su = su.substring(0, su.length-1);
+                document.getElementById("res").innerText = su;
+            }
+            else {
+                su = "";
+                document.getElementById("res").innerText = ini;
+            }
+            
+        }
+        // 계산
+        else if(value == "=") {
+            if(temp != "" || op != "" || su != "") {
+                result = eval(temp + op + su);
+                document.getElementById("res").innerText = result;
+                su = result;
+                op = "";
+            }
+            else document.getElementById("res").innerText = ini;
+        }
+        // 연산자
+        else if(value == "+" || value == "-" || value == "/" || value == "*") {
+            if(op != "") {
+                result = eval(temp + op + su);
+                document.getElementById("res").innerText = result;
+                su = result;
+            }
+            op = value;
+            temp = su;
+            su = "";
+        } else {
+            su += value;
+            document.getElementById("res").innerText = su;
+        }
+    }
+    function heart() {
+        result = "<font color='red'><b>♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥</b></font>"
+        document.getElementById("res").innerHTML = result;
+    }
+
 </script>
 </body>
 </html>
