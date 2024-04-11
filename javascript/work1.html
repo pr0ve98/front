@@ -3,44 +3,53 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
     <title>W3.CSS</title>
     <style>
         .w3-btn {width:100px; font-size: 2em; margin: 0 2px;}
         .row0, .row1, .row2, .row3, .row4 {display: flex;}
-        h2 {margin-bottom: 30%; text-align: center;}
+        .title {margin-bottom: 10%; text-align: center;}
+        .w3-display-middle {padding: 50px;}
     </style>
     <script>
 
     </script>
 </head>
 <body>
-    <div class="w3-display-middle">
-    <h2>계산기</h2>
+    <div class="w3-display-middle w3-panel w3-border w3-round-large">
+    <h2 class="title">계산기</h2>
+    <div class="w3-container w3-light-grey">
+        <h2 style="text-shadow:1px 1px 0 #444">0</h2>
+    </div>
     <div class=row0>
-        <p><button class="w3-button w3-light-blue w3-round-xxlarge w3-btn">(</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">)</button></p>
-        <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">%</button></p>
-        <p><button class="w3-button w3-gray w3-round-xxlarge w3-btn">AC</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">(</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">)</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">%</button></p>
+        <p><button class="w3-button w3-red w3-round-xxlarge w3-btn">AC</button></p>
     </div>
     <div class=row1>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">1</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">2</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">3</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">/</button></p>
     </div>
     <div class=row2>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">4</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">5</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">6</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">*</button></p>
     </div>
     <div class=row3>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">7</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">8</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">9</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">-</button></p>
     </div>
     <div class=row4>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">0</button></p>
         <p><button class="w3-button w3-light-gray w3-round-xxlarge w3-btn">.</button></p>
         <p><button class="w3-button w3-blue w3-round-xxlarge w3-btn">=</button></p>
+        <p><button class="w3-button w3-2021-ultimate-gray w3-round-xxlarge w3-btn">+</button></p>
     </div>
 </div>
 </body>
