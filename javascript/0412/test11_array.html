@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test11.html</title>
+    <script>
+        'use strict';
+
+        // const arr1 = new Array();
+        const arr2 = ['사과', '배', '바나나', '딸기', '포도'];
+        console.log("arr2.length(): ", arr2.length);
+        console.log("arr2: ", arr2);
+        console.log("============================================================");
+        
+        // 배열에 값 추가하기(뒤에서추가: push(), 앞쪽으로 추가: unshift())
+        arr2.push("키위","오렌지","코코넛");
+        console.log("arr2.length(): ", arr2.length);
+        console.log("arr2: ", arr2);
+        console.log("===========================================================");
+        arr2.unshift("체리","수박");
+        console.log("arr2.length(): ", arr2.length);
+        console.log("arr2: ", arr2);
+        console.log("===========================================================");
+        console.log("");
+
+        // 배열 요소 삭제(뒤에서 삭제: pop(), 앞에서 삭제: shift())
+        arr2.pop();
+        arr2.pop();
+        console.log("arr2.length(): ", arr2.length);
+        console.log("arr2: ", arr2);
+        console.log("===========================================================");
+        arr2.shift();
+        arr2.shift();
+        console.log("arr2.length(): ", arr2.length);
+        console.log("arr2: ", arr2);
+        console.log("===========================================================");
+        
+        // 지정한 위치의 요소를 제거: splice(인덱스번호, 개수)
+        // arr2.splice(2, 1);
+        // console.log("arr2: ", arr2);
+        // console.log("===========================================================");
+        // arr2.splice(1, 2);
+        // console.log("arr2: ", arr2);
+        // console.log("===========================================================");
+        
+        // slice(시작인덱스번호, 끝인덱스번호-1): 지정된 위치 포함 잘라내서 새로운 배열 객체를 만들어준다 (추출의 의미)
+        let fruits = arr2.slice(3);
+        console.log(typeof(fruits));
+        console.log(fruits);
+        console.log("===========================================================");
+        fruits = arr2.slice(1,3);
+        console.log(typeof(fruits));
+        console.log(fruits);
+        console.log("===========================================================");
+        
+        // 배열 합치기: concat()
+        let concatFruits = arr2.concat(fruits);
+        console.log("concatFruits: "+ concatFruits);
+        
+        // 배열 안에서의 자료 검색: indexOf(), lastIndexOf()
+        console.log(concatFruits.indexOf("딸기"));
+        console.log(concatFruits.indexOf("딸기2")); // 없으면 -1 출력
+        console.log(concatFruits.indexOf("바나나"));
+        console.log(concatFruits.lastIndexOf("바나나"));
+        
+        // includes(): 포함유무?
+        console.log(concatFruits.includes("사과"));
+        console.log(concatFruits.includes("오렌지"));
+        console.log("===========================================================");
+        
+        // 배열의 값을 출력(forEach())
+        console.log("forEach()");
+        concatFruits.forEach((data, index) => console.log(data, index));
+        console.log("===========================================================");
+        
+        // 배열의 값을 출력(map())
+        console.log("map()");
+        concatFruits.map((data, index) => console.log(data, index));
+        </script>
+</head>
+<body>
+    <h2>배열연습</h2>
+</body>
+</html>
