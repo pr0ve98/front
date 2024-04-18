@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2.html</title>
+    <script>
+        'use strict';
+
+        // 객체 생성(객체: {키, 값})
+        let obj1 = {}; // 생성하면서 값을 넣어주는 방법
+        let obj2 = new Object(); // 생성해놓고 나중에 값을 넣어주는 방법
+        obj2.name = '홍길동'; // obj1 = {name, '홍길동'};
+        obj2.age = 25;
+        obj2.jumsu = [100, 90, 80];
+        obj2.myFunc = function() {
+            console.log("성명: ",this.name);
+        };
+        obj2.myObj = {
+            tel: "010-1234-5678",
+            address: '청주시 흥덕구 사창동 그린컴퓨터'
+        };
+
+        console.log("obj2 객체: ", obj2);
+        console.log("");
+        console.log(obj2.myFunc);
+        obj2.myFunc();
+    </script>
+</head>
+<body>
+    <h2>객체(Object)연습</h2>
+</body>
+</html>

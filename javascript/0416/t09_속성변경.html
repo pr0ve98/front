@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t09.html</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        'use strict';
+
+        function fSize32() {
+            demo.style.fontSize = '2em';
+            document.getElementById("demo").style.backgroundColor = 'blue';
+            
+            document.getElementById("btn1").style.display='none';
+            document.getElementById("btn2").style.display='block';
+        }
+        function fSize16() {
+            demo.style.fontSize = '1em';
+            document.getElementById("demo").style.backgroundColor = 'white';
+
+            document.getElementById("btn1").style.display='block';
+            document.getElementById("btn2").style.display='none';
+        }
+    </script>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+    <h2>속성 변경 연습</h2>
+    <hr/>
+    <p>
+        <button type="button" onclick="fSize32()" id="btn1" class="btn btn-success">글자크기2em(32px)</button>
+        <button type="button" onclick="fSize16()" id="btn2" style="display: none;" class="btn btn-danger">글자크기1em(16px)</button>
+    </p>
+    <p>
+        <button type="button" onclick="demoImage.style.display='none'" id="btn1" class="btn btn-success">그림 감추기</button>
+        <button type="button" onclick="demoImage.style.display='block'" id="btn2" style="display: none;" class="btn btn-danger">그림 보이기</button>
+    </p>
+    <p>
+        <button type="button" onclick="javascript:location.reload()" id="btn1" class="btn btn-primary">Reload</button>
+        <button type="button" onclick="location.href='http://www.naver.com';" id="btn2" class="btn btn-success">네이버</button>
+    </p>
+    <hr/>
+    <div id="demo">이곳에 메세지가 표시됩니다.</div>
+    <hr/>
+    <div id="demoImage"><img src="../../../images/11.png" width="200px"></div>
+</div>
+</body>
+</html>
