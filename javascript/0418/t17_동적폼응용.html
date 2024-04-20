@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,104 +10,245 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         'use strict';
-
-        // 가격 계산 (개별가격*수량)
-        function priceCalc(){
-            let price = myform.price.value * myform.ea.value;
-            // price = numberWithCommas(price);
-            demo1.innerHTML = numberWithCommas(price)+"원";
+        let totalPrice;
+    
+        // 가격계산(개별가격*수량)
+        function priceCalc() {
+            if(blankCheck()) {
+                let price = myform.price.value * myform.ea.value;
+                //price = numberWithCommas(price)
+                demo1.innerHTML = numberWithCommas(price) + "원";
+            }
         }
-        // VAT 계산 (총 가격의 10%)
-        function vatCalc(){
-            let price = myform.price.value * myform.ea.value;
-            let vat = price * 0.1;
-            demo2.innerHTML = numberWithCommas(vat)+"원";
+    
+        // VAT계산(총가격이 10%)
+        function vatCalc() {
+            if(blankCheck()) {
+                let price = myform.price.value * myform.ea.value;
+                let vat = price * 0.1;
+                demo2.innerHTML = numberWithCommas(vat) + "원";
+            }
         }
-        // 총 가격 계산 (총가격 + VAT)
-        function totalCalc(){
-            let price = myform.price.value * myform.ea.value;
-            let vat = price * 0.1;
-            let total = price+vat;
-            demo3.innerHTML = numberWithCommas(total)+"원";
+    
+        // 총가격계산(VAT포함한 가격)
+        function totalCalc() {
+            if(blankCheck()) {
+                let price = myform.price.value * myform.ea.value;
+                let vat = price * 0.1;
+                totalPrice = price + vat;
+                demo3.innerHTML = numberWithCommas(totalPrice) + "원";
+            }
         }
-        // 장바구니
-        function cartSend(){
-            let product = document.getElementById("product").value;
-            let ea = document.getElementById("ea").value;
-            let price = myform.price.value * myform.ea.value;
-            let vat = price * 0.1;
-            let total = price+vat;
-
-            demoCart.innerHTML += `<p><b>${product}</b>${opt}${ea}개${price}원${vat}원${total}원</p>`;
+    
+        function blankCheck() {
+            let price = myform.price.value;
+            if(price == "") {
+                alert("사이즈(단가)를 선택하세요");
+                return false;
+            }
+            if(price == 0) {
+                alert("상품을 선택하세요.");
+                return false;
+            }
+            return true;
         }
-
+    
         function productChoice() {
             let product = document.getElementById("product").value;
-
-            let productArr = ["S: 5000원","M: 10000원","L: 15000원","XL: 20000원","XXL: 25000원"];
-            let productValueArr = [5000, 10000, 15000, 20000, 25000];
+        
+            let productArr = ["상품선택","수영복", "튜브", "보트", "물안경", "오리발"];
+            let productTextArr = new Array();
+            let productValueArr = new Array();
+            
+            
+            if(product == productArr[0]) {
+                productTextArr = ["상품을 선택하세요."];
+                productValueArr = [0];
+            }
+            else if(product == productArr[1]) {  // 수영복
+                productTextArr = ["S","L","XL","XXL"];
+                productValueArr = [5000, 10000, 15000, 20000];
+            }
+            else if(product == productArr[2]) { //튜브
+                productTextArr = ["팔형","가슴형","의자형", "침대형"];
+                productValueArr = [1000, 2000, 3000, 4000];
+            }
+            else if(product == productArr[3]) { // 보트
+                productTextArr = ["소형","중형","대형", "초대형"];
+                productValueArr = [50000, 100000, 150000, 200000];
+            }
+            else if(product == productArr[4]) { // 물안경
+                productTextArr = ["유아용","어린이용","청소년용", "어른용"];
+                productValueArr = [700, 1700, 2500, 3500];
+            }
+            else {  // 오리발
+                productTextArr = ["작은발","중간발","큰발", "초대형발"];
+                productValueArr = [15000, 20000, 25000, 30000];
+            }
+        
+            let str = '<option value="">사이즈(단가) :</option>';
+            for(let i=0; i<productTextArr.length; i++) {
+                str += `<option value="${productValueArr[i]}">${productTextArr[i]}</option>`;
+            }
+            document.getElementById("price").innerHTML = str;
+        }
+    
+        function resetCheck() {
+            demo1.innerHTML = "";
+            demo2.innerHTML = "";
+            demo3.innerHTML = "";
+            demoCart.innerHTML = "";
+            demoCartTotal.innerHTML = "";
         }
 
-        // 콤마 변환함수
+        let strText = "<table class='table table-bordered'><thead class='thead-light'><tr><th>상품</th><th>옵션</th><th>수량</th><th>가격</th></tr>";
+        let CartTotal = 0;
+        function cartSend() {
+            let product = document.getElementById("product").value;
+            let opt = document.getElementById("price");
+            let optText = opt.options[opt.selectedIndex].text;
+            let ea = document.getElementById("ea").value;
+            totalPrice = (myform.price.value * ea) * 0.1 + Number(myform.price.value * ea);
+            CartTotal += Number(totalPrice);
+            let tp = numberWithCommas(totalPrice);
+            let ct = numberWithCommas(CartTotal);
+            if(blankCheck()) {
+                strText += `<tr><td>${product}</td><td>${optText}</td><td>${ea}개</td><td>${tp}</td>`;
+                    demoCart.innerHTML = strText;
+                    demoCartTotal.innerHTML = `<table class="table"><tr><th id="total">총 금액 <span>${ct}</span>원</th><tr></table>`;
+            }
+        }
+    
+        // 콤마 변환함수(1,234)
         function numberWithCommas(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
         }
     </script>
-</head>
-<body>
-<p><br/></p>
-<div class="container">
-    <h2>상품 가격 계산</h2>
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Light';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'WAGURITTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2403@1.0/WAGURITTF.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {font-family: 'Pretendard-Light';}
+        .table {text-align: center;}
+        span {color: red;}
+        .form-group {margin-top: 20%;}
+        #title {text-align: center;}
+        #main {display: flex; justify-content: space-evenly;}
+        #opt {display: flex;}
+        .carousel {width: 400px;}
+        #total {
+            text-align: right;
+            padding-right: 8%;
+            font-size: 16pt;
+        }
+        h2 {
+            font-family: 'WAGURITTF';
+            font-size: 3em;
+            padding: 10px 30px;
+            background-color: rgb(201, 240, 255);
+            border-radius: 30px;
+            border: 2px solid rgb(142, 193, 228);
+            display: inline-block;
+            margin: 20px 0px;
+            color: white;
+            text-shadow: 2px 1px 5px rgb(41, 112, 153);
+        }
+    </style>
+    </head>
+    <body>
+    <p><br/></p>
+    <div class="container">
+        <div id="title">
+            <h2>상품 가격 계산</h2>
+        </div>
+    <br/>
     <form name="myform">
-        <div class="form-group p-2">
-            <label for="product">상품명: </label>
-                <select name="product" id="product" onchange="productChoice()" class="form-control">
-                    <option selected>수영복</option>
+        <div class="border p-2 mb-3" id="main">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="01수영복.jpg" alt="수영복">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="02튜브.jpg" alt="튜브">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="03물안경.jpg" alt="물안경">
+                    </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    </a>
+                
+                </div>
+            <div class="opt">
+                <div class="form-group p-2">
+                    <label for="product">상품명 :</label>
+                    <select name="product" id="product" onchange="productChoice()" class="form-control">
+                    <option selected>상품선택</option>
+                    <option>수영복</option>
                     <option>튜브</option>
                     <option>보트</option>
                     <option>물안경</option>
                     <option>오리발</option>
-                </select>
-        </div>
-        <div class="form-group p-2">
-            <label for="price">사이즈(단가): </label>
-            <select name="price" id="price" class="form-control">
-                <option value="5000" selected>1. S Size(5,000)</option>
-                <option value="10000">2. M Size(10,000)</option>
-                <option value="15000">3. L Size(15,000)</option>
-                <option value="20000">4. XL Size(20,000)</option>
-                <option value="25000">5. XXL Size(25,000)</option>
-            </select>
-        </div>
-        <div class="form-group p-2">
-            <label for="ea">수량(개): </label>
-            <input type="number" name="ea" id="ea" value="1" min="1" class="form-control" />
-        </div>
-        <div class=" row text-center">
-            <input type="button" value="가격 계산" onclick="priceCalc()" class="btn btn-success mr-3 col" />
-            <input type="button" value="VAT" onclick="vatCalc()" class="btn btn-primary mr-3 col" />
-            <input type="button" value="총 가격" onclick="totalCalc()" class="btn btn-info col" />
-            <span class="col"></span>
-            <input type="button" value="장바구니" onclick="cartSend()" class="btn btn-warning mr-3 col" />
-            <input type="button" value="장바구니 비우기" onclick="location.reload()" class="btn btn-danger col" />
-        </div>
-        <hr/>
-        <div class="m-3 p-3 border" id="demoProduct">
-            <div class="row">
-                <div class="col ml-4">▶ 가격(단가*수량): </div>
-                <div id="demo1" class="col"></div>
+                    </select>
+                </div>
+                <div class="form-group p-2">
+                    <label for="price">사이즈(단가) :</label>
+                    <select name="price" id="price" class="form-control">
+                    <option value="0" selected>옵션선택</option>
+                    </select>
+                </div>
+                <div class="form-group p-2">
+                    <label for="ea">수량(개)</label>
+                    <input type="number" name="ea" id="ea" value="1" min="1" class="form-control"/>
+                </div>
             </div>
-            <div class="row">
-                <div class="col ml-4">▶ VAT(가격의 10%): </div>
-                <div id="demo2" class="col"></div>
-            </div>
-            <div class="row">
-                <div class="col ml-4">▶ 총 판매가(VAT포함): </div>
-                <div id="demo3" class="col"></div>
-            </div>
+        </div>
+        <div class="row p-2">
+        <input type="button" value="가격" onclick="priceCalc()" class="btn btn-success mr-1 col"/>
+        <input type="button" value="VAT" onclick="vatCalc()" class="btn btn-primary mr-1 col"/>
+        <input type="button" value="총가격" onclick="totalCalc()" class="btn btn-info mr-1 col"/>
+        <input type="reset" value="다시선택" onclick="resetCheck()" class="btn btn-secondary col"/>
+        <span class="col"></span>
+        <input type="button" value="장바구니담기" onclick="cartSend()" class="btn btn-warning mr-1 col">
+        <input type="button" value="장바구니비우기" onclick="location.reload()"  class="btn btn-danger col">
+        </div>
+        
+        <div class="mt-2 p-2 border" id="demoProduct">
+        <div class="row mb-1">
+            <div class="col ml-4">☞ 가격(단가*수량) : </div>
+            <div class="col" id="demo1"></div>
+        </div>
+        <div class="row mb-1">
+            <div class="col ml-4">☞ VAT(가격의 10%) : </div>
+            <div class="col" id="demo2"></div>
+        </div>
+        <div class="row">
+            <div class="col ml-4">☞ 총판매가격(VAT포함) : </div>
+            <div class="col" id="demo3"></div>
+        </div>
         </div>
         <hr/>
         <div id="demoCart"></div>
+        <div id="demoCartTotal"></div>
     </form>
 </div>
 </body>

@@ -8,6 +8,43 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function forCheck() {
+            let su1 = parseInt(document.getElementById("su1").value);
+            let su2 = parseInt(document.getElementById("su2").value);
+            let su3 = parseInt(document.getElementById("su3").value);
+            let str = "<table>", cnt = "", temp = "", res;
+
+            if(su1 > su2) {
+                temp = su1;
+                su1 = su2;
+                su2 = temp;
+            }
+            str += "<tr>";
+            for(let j=su1; j<=su2; j++) {
+                cnt++;
+                str += "<td><h2><b>"+j+"단</b></h2><br/>";
+                for(let k=1; k<=9; k++) {
+                    res = j * k;
+                    str += `${j} * ${k} = ${res}<br/>`;
+                }
+                str += "</td>";
+                if(cnt % su3 == 0) str += "</tr>";
+            }
+            demo.innerHTML = str;
+        }
+    </script>
+    <style>
+        table {
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid gray;
+        }
+        td {
+            border: 1px solid gray;
+            padding: 60px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,7 +52,6 @@
         <pre>
             출력할 구구단의 시작단과 끝단을 입력받고, 또 한 행에 출력할 열의 수를 입력받은후,
             조건에 맞도록 구구단을 출력하시오. (단, 시작단이 항상 작도록 처리하시오.)
-            ex 
         </pre>
 
         <p>시작단을 입력하세요.
@@ -27,6 +63,12 @@
         <p>한 행에 출력할 열의 수를 입력하세요.
             <input type="number" name="su3" id="su3" value="3" class="form-control" required />
         </p>
+        <p>
+            <input type="button" value="출력" onclick="forCheck()" class="btn btn-success form-control mb-2" />
+            <input type="button" value="초기화" onclick="location.reload()" class="btn btn-warning form-control" />
+        </p>
+        <hr/>
+        <div id="demo"></div>
     </div>
 </body>
 </html>
