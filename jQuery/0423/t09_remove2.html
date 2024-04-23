@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t01_속성.html</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        'use strict';
+
+        $(()=>{
+            // remove는 전부 다 지우고 empty는 내용만 지움
+            $("#setBtn").on('click', function(){
+                // $(".content").remove();
+                // $(".content").empty();
+
+                // $('p.aa, p.bb').remove();
+                $('p').remove('.aa, .bb'); // 위에 방법보다 더 많이 사용
+            });
+        });
+        
+    </script>
+    <style>
+        body {margin: 0px;}
+        .content{
+            border: 1px solid red;
+            background-color: yellow;
+        }
+        .aa {background-color: violet;}
+        .bb {background-color: aqua;}
+    </style>
+</head>
+<body>
+<p><br/></p>
+<div class="container">
+    <input type="button" value="내용제거" id="setBtn" class="btn btn-primary" />
+    <hr/>
+    <div class="content">
+        <p>1.안녕하세요</p>
+        <p>2.안녕하세요</p>
+        <p class="aa">3.안녕하세요</p>
+        <p>4.안녕하세요</p>
+        <p class="bb">5.안녕하세요</p>
+        <p>6.안녕하세요</p>
+        <p class="aa">7.안녕하세요</p>
+        <p>8.안녕하세요</p>
+        <p class="bb">9.안녕하세요</p>
+        <p>10.안녕하세요</p>
+    </div>
+</div>
+</body>
+</html>
