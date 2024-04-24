@@ -9,15 +9,38 @@ canvas.height = 576;
 c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.2;
-const img = new Image();
-img.src = '../../../images/play.png';
 
-img.onload = function(){
-    c.drawImage(img, 350, 200, 300, 200);
+let opacity = 0;
+let fadingIn = true;
+
+function updateOpc(){
+    if(fadingIn) {
+        opacity += 0.02;
+        if(opacity >= 1) {
+            fadingIn = false;
+        }
+    }
+    else {
+        opacity -= 0.02;
+        if(opacity <= 0) fadingIn = true;
+    }
+}
+
+function startDraw() {
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = "black";
+    c.fillRect(0, 0, canvas.width, canvas.height);
+    c.globalAlpha = opacity;
     c.fillStyle = 'white';
     c.font = "20px 고딕";
     c.fillText('시작하려면 스페이스바를 누르십시오.', 330, 220);
+    c.globalAlpha = 1;
+    
+    updateOpc();
+    requestAnimationFrame(startDraw);
 }
+startDraw();
+
 
 class Sprite {
     constructor({position, velocity}){
